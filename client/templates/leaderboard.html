@@ -1,0 +1,7 @@
+<h1>THE LEADERBOARD PAGE</h1>
+<table>
+		<tr ng-repeat="scores in score | orderBy : '-highScore'| limitTo:10">
+			<th>{{scores.username}}</a></th>
+			<td>{{scores.highScore}}</td>
+		</tr>
+	</table>

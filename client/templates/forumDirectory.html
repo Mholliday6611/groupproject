@@ -1,0 +1,14 @@
+<h1>THE FORUM DIRECTORY PAGE</h1>
+<span ng-show="!currentUser">
+		   </span>
+		   <span ng-show="currentUser">
+		     <a href="#!/forumCreate">Create Post</a>
+		   </span>
+<div>
+	<table>
+		<tr ng-repeat="posts in post">
+			<th>{{posts.user}}</a></th>
+			<td><a href="#!/forumPost?p={{posts._id}}">{{posts.title}}</a></td>
+		</tr>
+	</table>
+</div>

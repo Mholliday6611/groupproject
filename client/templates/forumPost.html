@@ -1,0 +1,17 @@
+<h1>THE SINGLE FORUM POST PAGE</h1>
+<h1>POST TITLE</h1>{{post.title}} <br>
+<h1>POST BODY</h1>{{post.post}} <br>
+<div ng-repeat="p in post.comments">
+<h1>COMMENT</h1>{{p.comment}} <br>
+<h1>COMMENTER</h1>{{p.user}} <br>
+</div>
+{{comments}}
+<div ng-submit="comment()">
+	<form method="post">
+		<input type="text" ng-model="comments.comment" placeholder="Comment Here">
+		<input type="submit">
+	</form>
+</div>
+<span ng-show="currentUser.username == post.user">
+	<a href="#!/forumUpdate?p={{post._id}}">Update this Post</a>
+</span>
