@@ -35,8 +35,8 @@ module.exports = function(app, passport){
         })
     });
 
-    app.put("/highscore", function(req,res){
-        User.findByIdAndUpdate(req.query.id, {$set: {"score":req.body.score}}, function(err,doc){
+    app.put("/highscore/:id", function(req,res){
+        User.findByIdAndUpdate(req.query.id, {$set: {"highScore":req.body.highScore}}, function(err,doc){
             console.log(doc);
             if(err){
                 res.send("update fail");

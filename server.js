@@ -31,4 +31,4 @@ auth(passport)
 routes(app, passport);
 
 app.listen(8080);
-mongoose.connect("mongodb://localhost/ass");
+mongoose.connect(process.env.DB_URL);
