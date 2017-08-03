@@ -1,13 +1,18 @@
-<h1>THE FORUM DIRECTORY PAGE</h1>
-<span ng-show="!currentUser">
-		   </span>
-		   <span ng-show="currentUser">
-		     <a href="#!/forumCreate">Create Post</a>
-		   </span>
-<div>
-	<table>
-		<tr ng-repeat="posts in post">
-			<th>{{posts.user}}</a></th>
+<h1 style="position:relative; top:20px;">THE FORUM DIRECTORY PAGE</h1>
+
+<span ng-show="!currentUser"></span>
+<span  ng-show="currentUser">
+    <a style="position:relative; top:35px;" href="#!/forumCreate">Create Post</a>
+</span>
+
+<div class="container" style="position:relative; top:5em;">
+	<table class="table table-striped">
+		<tr style="background-color:#00151c;">
+			<th>Username</th>
+			<th>Post</th>
+		</tr>
+		<tr style="background-color:#00151c;" ng-repeat="posts in post">
+			<td>{{posts.user}}</a></td>
 			<td><a href="#!/forumPost?p={{posts._id}}">{{posts.title}}</a></td>
 		</tr>
 	</table>

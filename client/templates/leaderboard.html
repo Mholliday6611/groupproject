@@ -1,7 +1,13 @@
-<h1>THE LEADERBOARD PAGE</h1>
-<table>
-		<tr ng-repeat="scores in score | orderBy : '-highScore'| limitTo:10">
-			<th>{{scores.username}}</a></th>
-			<td>{{scores.highScore}}</td>
-		</tr>
-	</table>
+<h1 style="position:relative; top:20px;">THE LEADERBOARD PAGE</h1>
+	<div style="position:relative; top:5em;" class="container">
+		<table class="table table-hover">
+			<tr style="background-color:#00151c;">
+				<th>Username</th>
+				<th>High Score</th>
+			</tr>
+			<tr style="background-color:#00151c;" ng-repeat="scores in score | orderBy : '-highScore'| limitTo:10">
+				<td>{{scores.username}}</td>
+				<td>{{scores.highScore}}</td>
+			</tr>
+		</table>
+	</div>
