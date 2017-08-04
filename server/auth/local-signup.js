@@ -6,6 +6,7 @@
 			username: user.name,
 			password: bcrypt.hashSync(user.pass),
 			bio: user.bio,
+			highScore: 1,
 			admin: false,
 			createdAt: new Date().toLocaleDateString()
 		}).save(function(err){

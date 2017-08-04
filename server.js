@@ -10,6 +10,22 @@ var session = require("express-session");
 var auth = require("./server/auth/passport-local");
 var multer =require("multer");
 
+var allowCrossDomain = function(req, res, next) {
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
+    res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization, Content-Length, X-Requested-With');
+
+    // intercept OPTIONS method
+    if ('OPTIONS' == req.method) {
+      res.send(200);
+    }
+    else {
+      next();
+    }
+};
+
+app.use(allowCrossDomain);
+
 app.use("/client", express.static(path.join(__dirname, "client")));
 app.use("/templates", express.static(path.join(__dirname, "client/templates")));
 
@@ -30,5 +46,5 @@ app.use(passport.initialize());
 auth(passport)
 routes(app, passport);
 
-app.listen(8080);
-mongoose.connect("mongodb://localhost/ass");
+app.listen(process.env.PORT || 8080);
+mongoose.connect(process.env.DB_URL);
