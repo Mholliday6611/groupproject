@@ -47,4 +47,4 @@ auth(passport)
 routes(app, passport);
 
 app.listen(process.env.PORT || 8080);
-mongoose.connect("mongodb://localhost/assdb");
+mongoose.connect(process.env.DB_URL);

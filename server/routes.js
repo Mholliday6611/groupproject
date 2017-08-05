@@ -128,7 +128,7 @@ module.exports = function(app, passport){
 
     app.put("/forum/comment/:id", function(req,res){
         console.log(req.query.id);
-        Post.findByIdAndUpdate(req.query.id, {$set:{"comments" :{"comment":req.body.comment, "user":req.user.username}}},{new:true}, function(err,doc){
+        Post.findByIdAndUpdate(req.query.id, {$addToSet:{"comments" :{"comment":req.body.comment, "user":req.user.username}}},{new:true}, function(err,doc){
             console.log(doc);
             if(err){
                 console.log(doc)

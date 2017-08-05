@@ -1,10 +1,12 @@
 angular.module("assApp.controllers", [])
     .controller("navCtrl", function($rootScope, $scope, $http, $location,$localStorage,
     $sessionStorage, $rootScope, $state) {
+        $rootScope.currentUser = $localStorage.currentUser
         $scope.logout = function() {
             $http.post("/logout")
             .then(function() {
                 $rootScope.currentUser = null;
+                $localStorage.currentUser = null;
                 $state.go("index");
             });
         }
@@ -21,7 +23,7 @@ angular.module("assApp.controllers", [])
     	$http.post('/forum/createPost', $scope.post, { headers: { 'Content-Type': 'application/json' } })
     	.then(function(response){
             console.log("dope")
-            $state.go("index");
+            $state.go("forumDirectoryPage");
     		$scope.msg = "dope!";
 		}, function(response){ 
 			$scope.msg ="Not dope!"
@@ -37,7 +39,7 @@ angular.module("assApp.controllers", [])
         })
     })
 
-    .controller("forumPostCtrl", function($scope, $http, $location){
+    .controller("forumPostCtrl", function($scope, $http, $location, $state){
         var p = $location.search().p
 
         $http.get("/forum/post/:id", {params :{id: p}})
@@ -48,6 +50,7 @@ angular.module("assApp.controllers", [])
         $scope.comment = function(){
             $http.put('/forum/comment/:id', $scope.comments, {params :{id: p}})
             .then(function(response){
+                $state.go("forumDirectoryPage");
 
                 console.log("coolio")
             }), function(response){
@@ -77,7 +80,7 @@ angular.module("assApp.controllers", [])
         $scope.editPost = function(){
             $http.put('/forum/update/:id', $scope.post, {params :{id: p}})
             .then(function(response){
-                $state.go("index");
+                $state.go("forumDirectoryPage");
                 console.log("coolio")
             }), function(response){
                 console.log("fail")
@@ -105,8 +108,8 @@ angular.module("assApp.controllers", [])
         $http.post('/user-login', $scope.post, { headers: { 'Content-Type': 'application/json' } })
         .then(function(response){
             console.log(response)
-            $rootScope.currentUser= response.data;
             $localStorage.currentUser= response.data;
+            $rootScope.currentUser = $localStorage.currentUser;
             console.log("user logged in");
             $state.go("index");
         }, function(response){ 
