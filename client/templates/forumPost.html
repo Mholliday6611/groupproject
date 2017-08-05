@@ -15,13 +15,12 @@
 			<h2>Comments</h2>
 			<div ng-repeat="p in post.comments">
 				{{p.comment}} 
-				<h2>By</h2>
-				{{p.user}}
+				<h4>By: {{p.user}}</h4>
 			</div>
-			<br>
 			<div ng-submit="comment()">
 				<form method="post">
-					<input type="text" ng-model="comments.comment" placeholder="Comment Here">
+					<textarea class="form-control" type="text" ng-model="comments.comment" placeholder="Comment Here"></textarea>
+					<br>
 					<input class="btn btn-default" type="submit">
 				</form>
 			</div>

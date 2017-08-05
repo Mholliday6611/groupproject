@@ -20,13 +20,9 @@
         		font-family:'Permanent Marker', cursive;
         		background-color:#00151c;
         		color:white;
-        	}
+                height:100%;
+                width:100%;
 
-        	video {
-        		position:relative;
-        		bottom:20px;
-        		min-height:100%;
-        		min-width:100%;
         	}
 
         	a {
@@ -41,8 +37,10 @@
         	}
 
         	.navbar {
+                margin:0 auto;
         		background-color:#002633;
         		color:white;
+                clear:both;
         	}
 
         	.navbar-brand, img {
@@ -71,10 +69,9 @@
         		background-image:url(/client/img/space.gif);
         		background-size:cover;
         		width:100%;
-        		height:42em;
-        		position:relative;
-        		bottom:20px;
+        		height:45.5em;
         		margin:0 auto;
+
         	}
 
         	#jumbo-icon {
@@ -95,9 +92,9 @@
 
         	footer {
         		background-color:black;
-        		position:relative;
-        		bottom:20px;
-        		padding:10px;
+        		position:absolute;
+        		bottom:0;
+        		width:100%;
         		height:4em;
 
         	}
@@ -144,6 +141,7 @@
 			    </div>
 			  </div>
 			</nav>
+
         <ui-view></ui-view>
     </body>
 </html>
